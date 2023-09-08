@@ -1,2 +1,2 @@
-# examples
+# Examples
 Distributed Systems subject examples
