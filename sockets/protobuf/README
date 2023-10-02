@@ -1,0 +1,25 @@
+Instalar
+--------
+
+- protobuf-compiler
+- python3-protobuf
+
+
+Generar stubs
+-------------
+
+$ protoc -I . --python_out=. sensor.proto
+
+
+Run server
+----------
+
+% ./udp-server.py
+
+
+Run client
+----------
+
+% ./udp-client.py localhost
+
+.

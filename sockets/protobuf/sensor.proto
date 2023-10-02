@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+message Reading {
+    int32 Id = 1;
+
+    enum SensorType {
+       UNKNOWN  = 0;
+       HUMIDITY = 1;
+       PRESSURE = 2;
+       ACCELERATION = 3;
+    }
+
+    SensorType type = 2;
+    float value = 3;
+    string unit = 4;
+}
