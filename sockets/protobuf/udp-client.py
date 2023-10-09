@@ -18,5 +18,6 @@ reading.value = 0.2
 reading.unit = "kg/m3"
 
 data = reading.SerializeToString()
+print(data)
 sock.sendto(data, destination)
 sock.close()
