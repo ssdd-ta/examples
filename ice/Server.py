@@ -2,15 +2,16 @@
 
 import sys
 import Ice
-Ice.loadSlice('Printer.ice')
+Ice.loadSlice('Calculator.ice')
 import Example
 
 
-class PrinterI(Example.Printer):
+class CalculatorI(Example.Calculator):
     n = 0
 
-    def write(self, message, current=None):
-        print("{0}: {1}".format(self.n, message))
+    def add(self, a, b, current=None):
+        res = a + b
+        print(f'{n}: {a}+{b}={res}')
         sys.stdout.flush()
         self.n += 1
 
@@ -18,10 +19,10 @@ class PrinterI(Example.Printer):
 class Server(Ice.Application):
     def run(self, argv):
         broker = self.communicator()
-        servant = PrinterI()
+        servant = CalculatorI()
 
-        adapter = broker.createObjectAdapter("PrinterAdapter")
-        proxy = adapter.add(servant, broker.stringToIdentity("printer1"))
+        adapter = broker.createObjectAdapter("CalculatorAdapter")
+        proxy = adapter.add(servant, broker.stringToIdentity("calculator1"))
 
         print(proxy)
         sys.stdout.flush()
