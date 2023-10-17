@@ -8,13 +8,7 @@ print(get('http://localhost:5000/').json())
 
 device_id = "door1"
 response = get(f'http://localhost:5000/{device_id}')
+print(response.json())
 
-if response.status_code == 404 or \
-   response.json()[device_id] == 'disabled':
-    new_status = 'enabled'
-else:
-    new_status = 'disabled'
-
-
-put(f'http://localhost:5000/{device_id}', data={'status': new_status})
+put(f'http://localhost:5000/{device_id}', data={'status': 'disabled'})
 print(get(f'http://localhost:5000/{device_id}').json())
