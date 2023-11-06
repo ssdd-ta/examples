@@ -10,8 +10,8 @@ def callback(ch, method, properties, body):
 
 localhost = pika.ConnectionParameters('localhost')
 connection = pika.BlockingConnection(localhost)
-
 channel = connection.channel()
+
 channel.queue_declare(queue='hello')
 
 channel.basic_consume(
