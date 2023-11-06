@@ -1,8 +1,13 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # Extracted from: https://www.rabbitmq.com/tutorials/tutorial-five-python.html
 
 import sys
 import pika
+
+
+def callback(ch, method, properties, body):
+    print("[x] Received %r: %r " % (method.routing_key, body.decode("UTF-8")))
+
 
 localhost = pika.ConnectionParameters(host='localhost')
 connection = pika.BlockingConnection(localhost)
@@ -18,14 +23,17 @@ if not binding_keys:
     sys.exit(1)
 
 for binding_key in binding_keys:
-    channel.queue_bind(exchange='twitter-pattern', queue=queue_name,
-                       routing_key=binding_key)
+    channel.queue_bind(
+        exchange='twitter-pattern',
+        queue=queue_name,
+        routing_key=binding_key
+    )
+
+channel.basic_consume(
+    on_message_callback=callback,
+    queue=queue_name,
+    auto_ack=True
+)
 
 print("[*] Waiting for messages. To exit press Ctrl+")
-
-def callback(ch, method, properties, body):
-    print("[x] Received %r: %r " % (method.routing_key, body.decode("UTF-8")))
-
-channel.basic_consume(on_message_callback=callback, queue=queue_name, auto_ack=True)
-
 channel.start_consuming()

@@ -1,10 +1,10 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # Extracted from: https://www.rabbitmq.com/tutorials/tutorial-two-python.html
 
 import time
 import pika
 
-STRICT_ROUND_ROBIN = False
+STRICT_ROUND_ROBIN = True
 
 def callback(ch, method, properties, body):
     print("[x] Received %r " % (body.decode("UTF-8")))

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 # Extracted from: https://www.rabbitmq.com/tutorials/tutorial-three-python.html
 
 import sys
