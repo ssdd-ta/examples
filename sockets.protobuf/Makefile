@@ -1,7 +1,7 @@
 all: compile
 
 compile:
-	protoc --python_out=. door.proto
+	protoc --python_out=. sensor.proto
 
 clean:
 	$(RM) *_pb2* *~
