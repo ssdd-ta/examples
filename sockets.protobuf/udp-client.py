@@ -9,7 +9,7 @@ if len(sys.argv) < 2:
     exit()
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-destination = (sys.argv[1], 2002)
+destination = (sys.argv[1], 1234)
 
 reading = sensor_pb2.Reading()
 reading.Id = 1
@@ -19,5 +19,6 @@ reading.unit = "kg/m3"
 
 data = reading.SerializeToString()
 print(data)
+
 sock.sendto(data, destination)
 sock.close()
