@@ -1,7 +1,13 @@
 Depends
 -------
 
-- openjdk-14-jdk-headless (deb)
+- openjdk-21-jdk-headless (deb)
+
+Change version
+--------------
+
+$ sudo update-alternatives --config java
+
 
 Compile
 -------
