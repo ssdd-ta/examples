@@ -1,13 +1,11 @@
 #
 
-STUBS = hello_pb2.py hello_pb2_grpc.py
+all: compile
 
-all: $(STUBS)
-
-%_pb2.py: %.proto
-	python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. $<
+compile:
+	python3 -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. hello.proto
 
 
 clean:
-	$(RM) *~ $(STUBS)
+	$(RM) *~ hello_pb2*
 	$(RM) -r __pycache__
