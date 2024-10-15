@@ -2,8 +2,6 @@
 
 syntax = "proto3";
 
-package hello;
-
 service Hello {
   rpc write (PrintRequest) returns (PrintReply) {}
 }
